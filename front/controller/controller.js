@@ -15,12 +15,12 @@ class Controller {
      * @param flag innerHTML or replace img src
      * @param callback invoke function after complete template parsing
      */
-    parseView(changeTemplate,changeTarget,flag,callback) {
+    parseView(state,changeTemplate,changeTarget,flag,callback) {
         let _self=this;
 
         try {
             //view, model 연결
-            _self.view.observe(changeTemplate,changeTarget,flag);
+            _self.view.observe(state,changeTemplate,changeTarget,flag);
 
             if(typeof callback === 'function') {
 
