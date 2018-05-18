@@ -1,8 +1,7 @@
-# 배너
+# 토너먼트
 
 html url : https://mgzx9tab56.execute-api.ap-northeast-2.amazonaws.com/prod/html
 
-api url : https://mgzx9tab56.execute-api.ap-northeast-2.amazonaws.com/prod/banners?device=desktop&count=3
 
 ## 서버 구성도
 - api server : lambda
@@ -16,24 +15,22 @@ api url : https://mgzx9tab56.execute-api.ap-northeast-2.amazonaws.com/prod/banne
 
 ## 폴더구조
     banner
-        ├── api                         #banner api
-        ├── functions                   #apex lambda function
-            ├── apiMainBanner               #api apex folder
-            ├── htmlBanner                  #html apex folder
+        ├── functions                   # apex lambda function
+            ├── build                   # apex folder
         ├── front
             ├── build                   # webpack build 후 파일 파일 생성할 저장 폴더
                 ├── bundle.js               # bundling js files
                 ├── index.html              # html
                 ├── main.css                # css
-            ├── config                  # api url, browser size, banner count설정
-            ├── controller              # model과 뷰를 연결해주는 역활
+            ├── controller              # model과 view를 연결, store를 관리(처리)
             ├── html                    # html
             ├── js                      # app.js, utility, ui관련 js
-                ├── app.js                  # DOMContentLoaded,resize등 페이지 로딩 후 실행될 로직 포함
-                ├── carousel.js             # banner carousel 구현 플러그인
-                ├── mobile.js               # mobile기기 인지 아닌지 useragent로 구분하는 플러그인
-                ├── utility.js              # browser size, check mobile browser, html escape등 utility
-            ├── model                   # ajax를 통하여 데이터를 관리하는 역활
+                ├── app.js                  # DOMContentLoaded, next, prev버튼 호출
+                ├── event.js                # next, prev 이벤트 구현
+                ├── utility.js              # html escape등 utility
+            ├── model                   # model
+                ├── const.js                  # const변수 선언
+                ├── store.js                  # store,newstore,historystore,paging store정의
             ├── scss                    # scss
             ├── template                # view단의 html template(es6 template string)
             ├── view                    # model의 데이터와 view template을 연결해주는 역활
@@ -49,15 +46,11 @@ api url : https://mgzx9tab56.execute-api.ap-northeast-2.amazonaws.com/prod/banne
 - git clone을 하여 레파지토리 복사
 
 ```
-    banner$ curl https://raw.githubusercontent.com/apex/apex/master/install.sh | sh //apex 설치
-    banner$ npm run install //banner, front폴더에 node_module설치
-    banner$ npm run start //webpack-dev-server 실행
-    banner$ npm run deploy //webpack build후 lambda,s3배포
+    $ curl https://raw.githubusercontent.com/apex/apex/master/install.sh | sh //apex 설치
+    $ npm run install //banner, front폴더에 node_module설치
+    $ npm run start //webpack-dev-server 실행
+    $ npm run deploy //webpack build후 lambda,s3배포
 ```
-
-**webpack-dev-server실행 후 크롬 브라우져에서는 cors이슈 때문에
-https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=ko
-크롬 익스텐션 설치 후 cors를 활성화 시켜주어야한다.
 
 ### 참고 자료
 

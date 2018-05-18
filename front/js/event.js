@@ -84,8 +84,6 @@ class Event {
 	btnPrev(state,callback) {
 
 		this.on(".container","click",".prev",(e)=> {
-			state.newStore.removeStore();
-			state.historyStore.removeStore();
 
 			if(state.paging.currentPaging===16) {
 				alert("이상형 토너먼트를 다시 시작합니다.");
@@ -95,7 +93,22 @@ class Event {
 			}
 
 			callback("process");
+			state.newStore.removeStore();
+			state.historyStore.removeStore();
 		});
+
+		// this.on(".container","click",".prev",(e)=> {
+		//
+		// 	callback("process");
+		//
+		// 	state.newStore.removeStore();
+		// 	state.historyStore.removeStore();
+		//
+		// 	if(state.paging.currentPaging===16) {
+		//
+		// 		return;
+		// 	}
+		// });
 	}
 }
 

@@ -146,7 +146,6 @@ class HistoryStore {
 		this.historyStore.push(data);
 	}
 	removeStore() {
-		console.log(this.historyStore);
 		this.historyStore.pop();
 	}
 	reverseStore() {

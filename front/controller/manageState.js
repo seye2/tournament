@@ -5,7 +5,7 @@ class ManageState {
 	getRandom(length) {
 		return Math.floor(Math.random()*length);
 	}
-	getRandomItems(state) {
+	getRandomItems(state,action) {
 		let tempStore=state.store.getContent();
 		let length=tempStore.length;
 		let newStore=state.newStore.getContent();
@@ -38,7 +38,13 @@ class ManageState {
 		rand = this.getRandom(tempStore.length);
 
 		result.push(tempStore[rand]);
+
 		result = Object.assign(result, {paging: state.paging.getPaging(),newStore:state.newStore});
+
+		//이전 버튼 클릭 시 마지막으로 저장된 내용으로 되돌리기
+		if(action==="prev") {
+			result = Object.assign(state.historyStore.getContent()[state.historyStore.getContent().length-1], {paging: state.paging.getPaging(),newStore:state.newStore});
+		}
 
 		return result;
 
