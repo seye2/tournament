@@ -14,10 +14,10 @@ const final=(data) => {
                 ${
                     data.historyStore.getContent().reverse().map((list) => `
 						<div class="stage">${list.stage}</div>
-                     	<div class="item-wrap ${list.stage}">
+                     	<div class="item_wrap stage${list.stage}">
 						${
                             list.map((d)=> 
-                                `<div>${d.name}(${d.stage}-${d.use})</div>`
+                                `<div class="box box${d.use ? "_active" : ""}">${d.name}(${d.stage}-${d.use})</div>`
                             )
                         }
 						</div>
