@@ -9,97 +9,98 @@ class Store {
 				{
 					id:1,
 					name:"트와이스",
+					stage:0,
 					use:false
 				},
 				{
 					id:2,
 					name:"여자친구",
-					state:0,
+					stage:0,
 					use:false
 				},
 				{
 					id:3,
 					name:"손예진",
-					state:0,
+					stage:0,
 					use:false
 				},
 				{
 					id:4,
 					name:"방탄소년단",
-					state:0,
+					stage:0,
 					use:false
 				},
 				{
 					id:5,
 					name:"정우성",
-					state:0,
+					stage:0,
 					use:false
 				},
 
 				{
 					id:6,
 					name:"레드벨벳",
-					state:0,
+					stage:0,
 					use:false
 				},
 				{
 					id:7,
 					name:"오마이걸",
-					state:0,
+					stage:0,
 					use:false
 				},
 				{
 					id:8,
 					name:"블랙핑크",
-					state:0,
+					stage:0,
 					use:false
 				},
 				{
 					id:9,
 					name:"마마무",
-					state:0,
+					stage:0,
 					use:false
 				},
 				{
 					id:10,
 					name:"에이핑크",
-					state:0,
+					stage:0,
 					use:false
 				},
 				{
 					id:11,
 					name:"모모랜드",
-					state:0,
+					stage:0,
 					use:false
 				},
 				{
 					id:12,
 					name:"신봉선",
-					state:0,
+					stage:0,
 					use:false
 				},
 				{
 					id:13,
 					name:"김정은",
-					state:0,
+					stage:0,
 					use:false
 				},
 				{
 					id:14,
 					name:"문재인",
-					state:0,
+					stage:0,
 					use:false
 				},
 				{
 					id:15,
 					name:"홍준표",
-					state:0,
+					stage:0,
 					use:false
 				},
 				{
 					id:16,
 					name:"남동훈",
-					state:0,
+					stage:0,
 					use:false
 				}
 			];
@@ -114,24 +115,48 @@ class Store {
 class NewStore {
 	constructor(props) {
 		if (props) {
-			this.store = props;
+			this.newStore = props;
 		} else {
-			this.store = [];
+			this.newStore = [];
 		}
 	}
 	addStore(data) {
-		this.store.push(data);
+		this.newStore.push(data);
 	}
 	removeStore() {
-		this.store.pop();
+		this.newStore.pop();
 	}
 	reverseStore() {
-		return this.store.reverse();
+		return this.newStore.reverse();
 	}
 	getContent() {
-		return this.store;
+		return this.newStore;
 	}
 }
+
+class HistoryStore {
+	constructor(props) {
+		if (props) {
+			this.historyStore = props;
+		} else {
+			this.historyStore = [];
+		}
+	}
+	addStore(data) {
+		this.historyStore.push(data);
+	}
+	removeStore() {
+		console.log(this.historyStore);
+		this.historyStore.pop();
+	}
+	reverseStore() {
+		return this.historyStore.reverse();
+	}
+	getContent() {
+		return this.historyStore;
+	}
+}
+
 
 class Paging {
 	constructor(props) {
@@ -153,5 +178,6 @@ class Paging {
 module.exports={
 	Store,
 	NewStore,
+	HistoryStore,
 	Paging
 };

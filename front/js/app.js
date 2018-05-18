@@ -2,35 +2,48 @@ require('babel-register');
 const Controller = require("../controller/controller").default;
 const template = require("../template/tournament");
 const event = require("./event").Event;
-const {Store,NewStore,Paging} = require("../model/store");
+const {Store,NewStore,Paging,HistoryStore} = require("../model/store");
+const {ManageState}= require("../controller/manageState");
 
 const store=new Store();
 const newStore=new NewStore();
+const historyStore=new HistoryStore();
+const manageState=new ManageState();
 const paging=new Paging(store.getContent().length);
-let controller=new Controller('body',template.tournaments);
+let controller=new Controller('.container',template.tournaments);
 
 document.addEventListener("DOMContentLoaded", function() {
 
     let pageEvent=new event();
+    const storeObject={
+		store:store,
+        newStore:newStore,
+        paging:paging,
+        historyStore:historyStore
+    }
 
-    controller.parseView({store:store,newStore:newStore,paging:paging},null,null,null,() => {
+    Object.assign(storeObject,{items:manageState.getRandomItems(storeObject)});
 
-        pageEvent.btnNext({store:store,newStore:newStore,paging:paging},(check)=> {
+    controller.parseView(storeObject,null,null,null,() => {
+
+        pageEvent.btnNext(storeObject,(check)=> {
             if(check==="last") {
-				controller.parseView({store:store,newStore:newStore,paging:paging},template.final,null,null,() => {
+				controller.parseView(storeObject,template.final,null,null,() => {
 				});
             } else {
 				paging.forward();
-				controller.parseView({store:store,newStore:newStore,paging:paging},null,null,null,() => {
+				Object.assign(storeObject,{items:manageState.getRandomItems(storeObject)});
+				controller.parseView(storeObject,null,null,null,() => {
 				});
             }
 
         });
 
-		pageEvent.btnPrev({store:store,newStore:newStore,paging:paging},(check)=> {
+		pageEvent.btnPrev(storeObject,(check)=> {
 			if(check!=="first") {
 				paging.backward();
-				controller.parseView({store:store,newStore:newStore,paging:paging},null,null,null,() => {
+				Object.assign(storeObject,{items:manageState.getRandomItems(storeObject)});
+				controller.parseView(storeObject,null,null,null,() => {
 				});
 			}
 

@@ -31,7 +31,7 @@ const html = (literalSections, ...substs) => {
     // (Never fails, because an empty template string
     // produces one literal section, an empty string)
     result += raw[raw.length-1]; // (A)
-
+    result=result.replace(/,/gi,"");
     return result;
 }
 

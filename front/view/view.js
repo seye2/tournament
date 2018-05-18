@@ -1,10 +1,7 @@
-const manageState= require("../controller/manageState").ManageState;
-
 class View {
     constructor() {
         this.el=arguments[0];
         this.template=arguments[1];
-        this.manageState=new manageState();
     }
 
     /**
@@ -20,7 +17,7 @@ class View {
 
         if(flag!=='replace') {
             const info=`
-                ${_template(this.manageState.getRandomItems(state))}
+                ${_template(state)}
             `;
             document.querySelector(`${_el}`).innerHTML=info;
         } else {
