@@ -31,7 +31,7 @@ html url : https://mgzx9tab56.execute-api.ap-northeast-2.amazonaws.com/prod/html
 - git clone을 하여 레파지토리 복사
 
 ```
-    $ yarn install //banner, front폴더에 node_module설치
+    $ yarn install //폴더에 node_module설치
     $ yarn start //webpack-dev-server 실행
     $ yarn build //webpack build
 ```
