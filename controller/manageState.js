@@ -35,8 +35,8 @@ class ManageState {
 		tempStore = tempStore.filter(obj => !toDelete.has(obj.name));
 
 		tempStore = tempStore.filter((obj) => obj.name!==result[0].name);
-		rand = this.getRandom(tempStore.length);
 
+		rand = this.getRandom(tempStore.length);
 		result.push(tempStore[rand]);
 
 		result = Object.assign(result, {paging: state.paging.getPaging(),newStore:state.newStore});
@@ -47,6 +47,36 @@ class ManageState {
 		}
 
 		return result;
+
+	}
+	selectItems(state,name) {
+
+		let selectIndex=0;
+		let nonSelectIndex=0;
+		let result=[];
+
+		// deep copy
+		let items = Array.prototype.slice.call(state.items);
+
+		selectIndex=items.findIndex(x => x.name === name);
+		items[selectIndex]['stage']=state.paging.currentPaging;
+		items[selectIndex]['use']=true;
+
+
+		nonSelectIndex=items.findIndex(x => x.name !== name);
+		items[nonSelectIndex]['stage']=state.paging.currentPaging;
+		items[nonSelectIndex]['use']=false;
+
+		Object.assign(items,{stage:state.paging.currentPaging});
+
+		result=items.filter(x => x.name === name);
+		result['stage']=state.paging.currentPaging;
+		result['use']=true;
+
+		return {
+			newStore:result,
+			historyStore:items
+		}
 
 	}
 }

@@ -1,0 +1,16 @@
+body {
+  background: white; }
+
+img {
+  vertical-align: top; }
+
+button {
+  cursor: pointer;
+  padding: 0; }
+
+html, body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0; }
+
+/*# sourceMappingURL=main.css.map*/

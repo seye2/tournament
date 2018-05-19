@@ -2,15 +2,8 @@
 
 html url : https://mgzx9tab56.execute-api.ap-northeast-2.amazonaws.com/prod/html
 
-
-## 서버 구성도
-- api server : lambda
-- web server : lambda
-- router : api gateway
+## 서버
 - static file server : s3
-
-
-![aws](https://s3.ap-northeast-2.amazonaws.com/seye2/image/aws.001.png)
 
 
 ## 폴더구조
@@ -53,16 +46,6 @@ html url : https://mgzx9tab56.execute-api.ap-northeast-2.amazonaws.com/prod/html
 ```
 
 ### 참고 자료
-
-#### lambda + api gateway
-http://gun0912.tistory.com/59
-
-http://docs.aws.amazon.com/lambda/latest/dg/welcome.html
-
-http://gun0912.tistory.com/63
-
-http://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started.html
-
 
 #### webpack
 https://github.com/FEDevelopers/tech.description/wiki/(ES6)-webpack%EA%B3%BC-Babel%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%98%EC%97%AC-ES6-%EA%B0%84%EB%8B%A8%ED%95%9C-%EC%82%AC%EC%9A%A9%ED%99%98%EA%B2%BD-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0

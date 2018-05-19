@@ -1,7 +1,10 @@
+const {TOURNAMENT_TOTAL_COUNT} = require("../model/const");
+const {ManageState}= require("../controller/manageState");
 
 class Event {
 	constructor(props) {
 		this.dc=document;
+		this.manageState=new ManageState();
 	}
 	on(elSelector, eventName, selector, fn) {
 		const element = document.querySelector(elSelector);
@@ -27,36 +30,7 @@ class Event {
 			}
 		});
 	}
-	selectItems(state,name) {
 
-		let selectIndex=0;
-		let nonSelectIndex=0;
-		let result=[];
-
-		// shallow copy
-		let items = JSON.parse(JSON.stringify(state.items));
-
-		selectIndex=items.findIndex(x => x.name === name);
-		items[selectIndex]['stage']=state.paging.currentPaging;
-		items[selectIndex]['use']=true;
-
-
-		nonSelectIndex=items.findIndex(x => x.name !== name);
-		items[nonSelectIndex]['stage']=state.paging.currentPaging;
-		items[nonSelectIndex]['use']=false;
-
-		Object.assign(items,{stage:state.paging.currentPaging});
-
-		result=items.filter(x => x.name === name);
-		result['stage']=state.paging.currentPaging;
-		result['use']=true;
-
-		return {
-			newStore:result,
-			historyStore:items
-		}
-
-	}
 	btnNext(state,callback) {
 		let name="";
 		let result=[];
@@ -65,7 +39,7 @@ class Event {
 
 			name=this.dc.querySelector(".select-item input[name=choose]:checked").getAttribute("value");
 
-			result=this.selectItems(state,name);
+			result=this.manageState.selectItems(state,name);
 
 			state.newStore.addStore(result.newStore);
 			state.historyStore.addStore(result.historyStore);
@@ -85,7 +59,7 @@ class Event {
 
 		this.on(".container","click",".prev",(e)=> {
 
-			if(state.paging.currentPaging===16) {
+			if(state.paging.currentPaging===TOURNAMENT_TOTAL_COUNT) {
 				alert("이상형 토너먼트를 다시 시작합니다.");
 
 				callback("first");

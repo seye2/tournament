@@ -45,19 +45,14 @@ module.exports = {
     },
 
     plugins: [
-        extractSass,
-        new UglifyJSPlugin(),
-        new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /\.css$/,
-            cssProcessorOptions: { discardComments: { removeAll: true } }
-        })
+        extractSass
     ],
     // Create Sourcemaps for the bundle
     devtool: 'source-map',
     devServer: {
         contentBase: dir_html,
         inline:true,
-        hot:true,
+        port:8080,
         headers: {
             "Access-Control-Allow-Origin": "*",
         }

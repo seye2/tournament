@@ -1,6 +1,0 @@
-{
-  "name": "comic",
-  "description": "",
-  "nameTemplate":"{{.Function.Name}}"
-}
-
