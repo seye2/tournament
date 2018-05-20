@@ -36,7 +36,7 @@ html url : https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/index.html
 
 ## 구조 설명
 
-<img src="https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/1.png?v=1" width="700" height="400" />
+<img src="https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/1.png?v=2" width="700" height="400" />
 
 1. “app.js”에서 store의 객체를 생성한다.
 2. ”app.js”에서 모델과 뷰를 연결해주는 “controller.js”를 호출하면서 뷰에 생성한 모델 객체를 같이 전달한다.
