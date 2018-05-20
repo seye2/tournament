@@ -36,7 +36,7 @@ html url : https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/index.html
 
 ## 구조 설명
 
-![폴더 구조 설명](https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/1.png)
+<img src="https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/1.png" width="800" height="600" />
 
 1. “app.js”에서 store의 객체를 생성한다.
 2. ”app.js”에서 모델과 뷰를 연결해주는 “controller.js”를 호출하면서 뷰에 생성한 모델 객체를 같이 전달한다.
@@ -49,7 +49,7 @@ html url : https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/index.html
 
 ## 다음,이전 버튼 선택시 데이터 흐름
 
-![다음 버튼 선택시 데이터 흐름](https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/2.png)
+<img src="https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/2.png" width="800" height="600" />
 
 1. 선택된 데이터를 “NewStore”에 저장
 2. “ManageState”에서 ”HistoryStore”에 저장된 데이터를 “Store”와 비교
@@ -58,7 +58,7 @@ html url : https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/index.html
 5. ”Store”에서 중복 처리된 데이터 중 선택된, 선택되지 않았지만 노출된 데이터를 ”HistoryStore”에 저장
 6. “HistoryStore”를 최종 트리 화면에 노출
 
-![이전 버튼 선택시 데이터 흐름](https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/3.png)
+<img src="https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/3.png" width="800" height="600" />
 
 1. ”HistoryStore”에 저장된 최신 데이터를 “ManageState”에서 처리해서 “HistoryStore”를 화면에서 출력
 
