@@ -1,7 +1,70 @@
-body{background:white}
 img{vertical-align:top;}
 button{cursor:pointer;padding:0;}
 html, body{overflow:hidden;margin:0;padding:0;}
+dl,dt,dd{margin:0;padding:0;}
+
+body{max-width:720px;margin:0 auto;text-align:center;background:white}
+
+h1{margin:60px 0 0 0;}
+
+#section-tournament{
+  .tournament{
+
+    .btn-wrap{
+      overflow:hidden;
+
+      .button{
+
+        &.btn-prev{
+          float:left;
+        }
+
+        &.btn-next{
+          float:right;
+        }
+
+        button{
+          padding:8px;
+          font-size:15px;
+          border:1px solid black;
+          border-radius:5px;
+        }
+
+      }
+    }
+
+    fieldset{
+      display:block;margin:20px 0 0 0;padding:30px;overflow:hidden;
+
+      .select-item{
+
+        &.first{float:left;width:40%;text-align:center;}
+        &.last{float:right;width:40%;text-align:center;}
+
+      }
+      .vs{float:left;width:20%;margin-top:10px; }
+    }
+  }
+
+  .final{
+    .winner{margin:40px 0 0 0;font-weight:bold;font-size:30px;}
+
+    .item-wrap{
+      overflow:hidden;padding:10px;
+      .stage{float:left;width:30%;margin:10px 0 0 0;}
+      .item{
+        float:left;width:70%;
+
+        .box{
+          float:left;width:45%;margin:0 0 0 10px;padding:8px;border:2px solid black;box-sizing:border-box;
+          &.box_active{font-weight:bold;color:green;border:2px solid green;}
+          &:first-child{margin:0;}
+        }
+      }
+    }
+
+  }
+}
 
 
 

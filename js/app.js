@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         pageEvent.btnNext(storeObject,(check)=> {
             if(check==="last") {
+            	console.log(storeObject.newStore.getContent())
 				controller.parseView(storeObject,template.final,null,null,null);
             } else {
 				paging.forward();

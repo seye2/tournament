@@ -22,7 +22,7 @@ class Event {
 						setTimeout(() => {
 
 							return fn.call(p, event);
-						},200);
+						},150);
 					}
 
 					el = el.parentNode;
@@ -70,19 +70,6 @@ class Event {
 			state.newStore.removeStore();
 			state.historyStore.removeStore();
 		});
-
-		// this.on(".container","click",".prev",(e)=> {
-		//
-		// 	callback("process");
-		//
-		// 	state.newStore.removeStore();
-		// 	state.historyStore.removeStore();
-		//
-		// 	if(state.paging.currentPaging===16) {
-		//
-		// 		return;
-		// 	}
-		// });
 	}
 }
 

@@ -22,7 +22,7 @@ class ManageState {
 
 		}
 
-		//중복 제거
+		//중복 리스트 만들기
 		historyStore.map((list)=> {
 			list.map((data)=> {
 
@@ -56,7 +56,7 @@ class ManageState {
 		let result=[];
 
 		// deep copy
-		let items = Array.prototype.slice.call(state.items);
+		let items = JSON.parse(JSON.stringify(state.items));
 
 		selectIndex=items.findIndex(x => x.name === name);
 		items[selectIndex]['stage']=state.paging.currentPaging;
@@ -69,9 +69,7 @@ class ManageState {
 
 		Object.assign(items,{stage:state.paging.currentPaging});
 
-		result=items.filter(x => x.name === name);
-		result['stage']=state.paging.currentPaging;
-		result['use']=true;
+		result.push(items[selectIndex]);
 
 		return {
 			newStore:result,

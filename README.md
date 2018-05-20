@@ -1,6 +1,6 @@
 # 토너먼트
 
-html url : https://mgzx9tab56.execute-api.ap-northeast-2.amazonaws.com/prod/html
+html url : https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/index.html
 
 ## 서버
 - static file server : s3
