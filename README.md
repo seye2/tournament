@@ -36,7 +36,7 @@ html url : https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/index.html
 
 ## 구조 설명
 
-<img src="https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/1.png" width="600" height="400" />
+<img src="https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/1.png?v=1" width="700" height="400" />
 
 1. “app.js”에서 store의 객체를 생성한다.
 2. ”app.js”에서 모델과 뷰를 연결해주는 “controller.js”를 호출하면서 뷰에 생성한 모델 객체를 같이 전달한다.
@@ -49,7 +49,7 @@ html url : https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/index.html
 
 ## 다음,이전 버튼 선택시 데이터 흐름
 
-<img src="https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/2.png" width="600" height="400" />
+<img src="https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/2.png?v=1" width="700" height="400" />
 
 1. 선택된 데이터를 “NewStore”에 저장
 2. “ManageState”에서 ”HistoryStore”에 저장된 데이터를 “Store”와 비교
@@ -58,18 +58,19 @@ html url : https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/index.html
 5. ”Store”에서 중복 처리된 데이터 중 선택된, 선택되지 않았지만 노출된 데이터를 ”HistoryStore”에 저장
 6. “HistoryStore”를 최종 트리 화면에 노출
 
-<img src="https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/3.png" width="600" height="400" />
+<img src="https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/3.png?v=1" width="700" height="400" />
 
 1. ”HistoryStore”에 저장된 최신 데이터를 “ManageState”에서 처리해서 “HistoryStore”를 화면에서 출력
 
 ## 기타
-### SCSS
- - CSS모듈화가 편리한 이점을 이용하기 위해서 SCSS를 사용
+### SCSS
+- CSS모듈화가 편리한 이점을 이용하기 위해서 SCSS를 사용
+
 ### Webpack
-- SCSS컴파일과 소스 번들링은 Webpack을 이용
- - entry point는 소스의 메인 진입점인 “app.js”와 css로 컴파일 할 ”tournament.scss” 두 파일로 구성 - loader는 es2015를 사용하기 위해 ＂babel-loader”를 사용
- - scss를 빌드해서 css로 extract하기 위해 “sass-loader, style-loader, css-loader”를 사용
- - local에서 테스트하기 위한 webpack-dev-server 설정
+- SCSS컴파일과 소스 번들링은 Webpack을 이용
+- entry point는 소스의 메인 진입점인 “app.js”와 css로 컴파일 할 ”tournament.scss” 두 파일로 구성 - loader는 es2015를 사용하기 위해 ＂babel-loader”를 사용
+- scss를 빌드해서 css로 extract하기 위해 “sass-loader, style-loader, css-loader”를 사용
+- local에서 테스트하기 위한 webpack-dev-server 설정
 
 ### 참고 자료
 
