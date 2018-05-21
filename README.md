@@ -20,15 +20,17 @@ html url : https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/index.html
             ├── bundle.js               # bundling js files
             ├── index.html              # html
             ├── main.css                # css
-        ├── controller              # model과 view를 연결, store를 관리(처리)
+        ├── controller              # controller
+        ├── controller.js               # model과 view를 연결
+        ├── manageStore.js              # store를 관리(처리)
         ├── html                    # html
         ├── js                      # app.js, utility, ui관련 js
             ├── app.js                  # DOMContentLoaded, next, prev버튼 호출
             ├── event.js                # next, prev 이벤트 구현
             ├── utility.js              # html escape등 utility
         ├── model                   # model
-            ├── const.js                  # const변수 선언
-            ├── store.js                  # store,newstore,historystore,paging store정의
+            ├── const.js                # const변수 선언
+            ├── store.js                # store,newstore,historystore,paging store정의
         ├── scss                    # scss
         ├── template                # view단의 html template(es6 template string)
         ├── view                    # model의 데이터와 view template을 연결해주는 역활
@@ -51,12 +53,10 @@ html url : https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/index.html
 
 <img src="https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/2.png?v=1" width="700" height="400" />
 
-1. 선택된 데이터를 “NewStore”에 저장
-2. “ManageState”에서 ”HistoryStore”에 저장된 데이터를 “Store”와 비교
-3. 선택된 데이터를 저장한 ”NewStore”에 있는 데이터와 Store에 있는 데이터를 이름으로 비교 중복된 내용을 걸러낸다.
-4. 비교하여 “HistoryStore”에 있는 내용을 Store에서 제외 중복 처리를
-5. ”Store”에서 중복 처리된 데이터 중 선택된, 선택되지 않았지만 노출된 데이터를 ”HistoryStore”에 저장
-6. “HistoryStore”를 최종 트리 화면에 노출
+1. "Store"에 있는 데이터를 랜덤하게 위치시켜 "다음" 버튼 클릭 시 선택된 데이터는 "NewStore"와 출력된 모든 데이터는 "HistoryStore"에 저장
+2. "다음" 버튼 다시 클릭 시 "NewStore"에서 선택되어진 데이터를 다시 랜덤하게 위치시키고 선택된 데이터는 다시 "NewStore"에 그다음 배열로 저장.
+3. 출력된 데이터는 누적으로 "HistoryStore"에 저장
+* 최종적으로 “HistoryStore”를 최종 트리 화면에 노출
 
 <img src="https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/3.png?v=1" width="700" height="400" />
 

@@ -79,16 +79,15 @@ h1 {
     #section-tournament .final .item-wrap .item .box {
       float: left;
       width: 45%;
-      margin: 0 0 10px 10px;
+      margin: 0 0 10px 0;
       padding: 8px;
       border: 2px solid black;
       box-sizing: border-box; }
+      #section-tournament .final .item-wrap .item .box:nth-child(even) {
+        margin: 0 0 10px 10px; }
       #section-tournament .final .item-wrap .item .box.box_active {
-        margin: 0;
         font-weight: bold;
         color: green;
         border: 2px solid green; }
-      #section-tournament .final .item-wrap .item .box:first-child {
-        margin: 0; }
 
 /*# sourceMappingURL=main.css.map*/

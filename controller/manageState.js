@@ -68,8 +68,8 @@ class ManageState {
 		// deep copy
 		let temp = JSON.parse(JSON.stringify(state.items));
 
-		for(var i = 0; i < names.length; i++) {
-			for(var j = 0; j < temp.length; j++) {
+		for(let i = 0; i < names.length; i++) {
+			for(let j = 0; j < temp.length; j++) {
 
 				selectIndex=temp[j].findIndex(x => x.name === names[i]);
 
