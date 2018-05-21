@@ -3,7 +3,7 @@ const util= require("../js/utility");
 
 /**
  * banner data, view template parsing
- * @param res banner data
+ * @param res store data
  * @returns {string} es6 template + data
  */
 const final=(data) => {
@@ -12,7 +12,7 @@ const final=(data) => {
     str=util.html`
         <section id="section-tournament">
             <div class="final">
-            	<div class="winner">우승 : ${data.newStore.getContent()[data.newStore.getContent().length-1][0].name}</div>
+            	<div class="winner">우승 : ${data.newStore.getContent()[data.items.paging][0][0].name}</div>
 				<hr />
                 ${
                     data.historyStore.getContent().reverse().map((list) => `
@@ -20,8 +20,10 @@ const final=(data) => {
 							<div class="stage">${list.stage}강</div>
 							<div class="item stage${list.stage}">
 							${
-								list.map((d)=> 
-									`<div class="box box${d.use ? "_active" : ""}">${d.name}</div>`
+								list.map((data)=>
+									data.map((result)=>
+									`<div class="box box${result.use ? "_active" : ""}">${result.name}</div>`
+									)
 								)
 							}
 							</div>
@@ -37,11 +39,11 @@ const final=(data) => {
 }
 
 const tournaments=(data) => {
-
     let str="";
+// console.log(data);
     str=util.html`
         <section id="section-tournament">
-			<div class="tournament">
+			<div class="tournament stage${data.items.paging}">
 				<h2>${data.items.paging}강</h2>
 				
 				<div class="btn-wrap">
@@ -49,22 +51,29 @@ const tournaments=(data) => {
 					<div class="button btn-next"><button class="next">다음</button></div>
 				</div>
 				
-				<fieldset>
-					<div class="select-item first">
-						<dl>
-							<dt><label for="favorite1">${data.items[0].name}</label></dt>
-							<dd><input id="favorite1" checked="checked" name="choose" type="radio" value="${data.items[0].name}" /></dd>
-						</dl>
-					</div>
-					<div class="vs">vs</div>
-					<div class="select-item last">
-					
-						<dl>
-							<dt><label for="favorite2">${data.items[1].name}</label></dt>
-							<dd><input id="favorite2" name="choose" type="radio" value="${data.items[1].name}" /></dd>
-						</dl>
-					</div>
-				</fieldset>
+				
+                ${
+					data.items.map((list, idx) => `
+						<fieldset>
+							<div class="select-item-wrap">
+								<div class="select-item first">
+									<dl>
+										<dt><label for="favorite${idx}">${list[0].name}</label></dt>
+										<dd><input id="favorite${idx}" checked="checked" name="choose${idx}" type="radio" value="${list[0].name}" /></dd>
+									</dl>
+								</div>
+								<div class="vs">vs</div>
+								<div class="select-item last">
+								
+									<dl>
+										<dt><label for="favorite${idx}">${list[1].name}</label></dt>
+										<dd><input id="favorite${idx}" name="choose${idx}" type="radio" value="${list[1].name}" /></dd>
+									</dl>
+								</div>
+							</div>
+						</fieldset>
+					`)
+				}
             </div>
         </section>
     `

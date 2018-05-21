@@ -8,8 +8,7 @@ class Controller {
 
     /**
      * call model and view
-     * @param type 'desktop' or 'mobile'
-     * @param count banner count : maxmum value is 3
+     * @param state store data
      * @param changeTemplate select template
      * @param changeTarget insert tag target
      * @param flag innerHTML or replace img src

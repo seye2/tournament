@@ -32,17 +32,23 @@ class Event {
 	}
 
 	btnNext(state,callback) {
-		let name="";
+		let values=[];
+		let names=[];
 		let result=[];
 
 		this.on(".container","click",".next",(e)=> {
 
-			name=this.dc.querySelector(".select-item input[name=choose]:checked").getAttribute("value");
+			values=this.dc.querySelectorAll(".select-item input[type=radio]:checked");
 
-			result=this.manageState.selectItems(state,name);
+			for(var i = 0; i < values.length;i++) {
 
-			state.newStore.addStore(result.newStore);
-			state.historyStore.addStore(result.historyStore);
+				names.push(values[i].getAttribute("value"));
+			}
+
+			result=this.manageState.selectItems(state,names);
+
+			state.newStore.addStore(result[0]);
+			state.historyStore.addStore(result[1]);
 
 			if(state.paging.currentPaging<4) {
 				alert("이상형을 다 선택하셨습니다.");

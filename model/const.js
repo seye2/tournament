@@ -3,7 +3,6 @@ const TOURNAMENT_STEP=2;
 
 
 module.exports={
-	TOURNAMENT_TOTAL_COUNT,
 	TOURNAMENT_STEP
 };
 
