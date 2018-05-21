@@ -53,14 +53,14 @@ html url : https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/index.html
 
 <img src="https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/2.png?v=1" width="700" height="400" />
 
-1. "Store"에 있는 데이터를 랜덤하게 위치시켜 "다음" 버튼 클릭 시 선택된 데이터는 "NewStore"와 출력된 모든 데이터는 "HistoryStore"에 저장
-2. "다음" 버튼 다시 클릭 시 "NewStore"에서 선택되어진 데이터를 다시 랜덤하게 위치시키고 선택된 데이터는 다시 "NewStore"에 그다음 배열로 저장.
-3. 출력된 데이터는 누적으로 "HistoryStore"에 저장
+1. "Store"에 있는 데이터를 랜덤하게 위치시켜 "다음" 버튼 클릭 시 선택된 데이터는 "NewStore"와 출력된 모든 데이터는 "HistoryStore"에 저장한다.
+2. "다음" 버튼 다시 클릭 시 "NewStore"에서 선택되어진 데이터를 다시 랜덤하게 위치시키고 선택된 데이터는 다시 "NewStore"에 그 다음 배열로 저장한다.
+3. 출력된 데이터는 누적으로 "HistoryStore"에 저장한다.
 * 최종적으로 “HistoryStore”를 최종 트리 화면에 노출
 
 <img src="https://s3.ap-northeast-2.amazonaws.com/seye2/tournament/3.png?v=1" width="700" height="400" />
 
-1. ”HistoryStore”에 저장된 최신 데이터를 “ManageState”에서 처리해서 “HistoryStore”를 화면에서 출력
+1. ”HistoryStore”에 저장된 최신 데이터를 “ManageState”에서 처리해서 “HistoryStore”를 화면에서 출력한다.
 
 ## 기타
 ### SCSS
