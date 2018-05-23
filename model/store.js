@@ -94,13 +94,13 @@ class Store {
 				[
 					{
 						id:13,
-						name:"김정은",
+						name:"강호동",
 						stage:0,
 						use:false
 					},
 					{
 						id:14,
-						name:"문재인",
+						name:"유재석",
 						stage:0,
 						use:false
 					}
@@ -108,7 +108,7 @@ class Store {
 				[
 					{
 						id:15,
-						name:"홍준표",
+						name:"신동엽",
 						stage:0,
 						use:false
 					},
