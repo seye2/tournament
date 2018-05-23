@@ -8,11 +8,12 @@ const util= require("../js/utility");
  */
 const final=(data) => {
 	let str="";
-
+	console.log(data.newStore.getContent()[data.newStore.getContent().length-1])
+console.log(data.newStore.getContent()[data.items.paging]);
     str=util.html`
         <section id="section-tournament">
             <div class="final">
-            	<div class="winner">우승 : ${data.newStore.getContent()[data.items.paging][0][0].name}</div>
+            	<div class="winner">우승 : ${data.newStore.getContent()[data.newStore.getContent().length-1][0][0].name}</div>
 				<hr />
                 ${
                     data.historyStore.getContent().reverse().map((list) => `
@@ -22,7 +23,7 @@ const final=(data) => {
 							${
 								list.map((data)=>
 									data.map((result)=>
-									`<div class="box box${result.use ? "_active" : ""}">${result.name}</div>`
+									`<div class="box box${result.use ? `_active active_${result.stage}` : ""}">${result.name}</div>`
 									)
 								)
 							}
