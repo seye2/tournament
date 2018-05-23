@@ -41,8 +41,7 @@ console.log(data.newStore.getContent()[data.items.paging]);
 
 const tournaments=(data) => {
     let str="";
-    let idCount=0;
-// console.log(data);
+
     str=util.html`
         <section id="section-tournament">
 			<div class="tournament stage${data.items.paging}">
@@ -55,26 +54,50 @@ const tournaments=(data) => {
 				
 				
                 ${
-					data.items.map((list, idx) => `
-						<fieldset>
-							<div class="select-item-wrap">
-								<div class="select-item first">
-									<dl>
-										<dt><label for="favorite${list[0].id}">${list[0].name}</label></dt>
-										<dd><input id="favorite${list[0].id}" checked="checked" name="choose${idx}" type="radio" value="${list[0].name}" /></dd>
-									</dl>
+					data.items.map((list, idx) => {
+						let checked=[];
+						
+						if(!list[0].use&&!list[1].use) {
+							checked=[
+								true,false
+							]
+						} else if(list[0].use&&list[1].use) {
+
+							checked=[
+								true,false
+							]
+						} else {
+
+							checked=[
+								list[0].use,list[1].use
+							]
+						}
+
+						checked[0]=checked[0]===true? "checked=checked" : "";
+						checked[1]=checked[1]===true? "checked=checked" : "";
+						
+						return (`
+							<fieldset>
+								<div class="select-item-wrap">
+									<div class="select-item first">
+										<dl>
+											<dt><label for="favorite${list[0].id}">${list[0].name}</label></dt>
+											<dd><input id="favorite${list[0].id}" ${checked[0]} name="choose${idx}" type="radio" value="${list[0].name}" /></dd>
+										</dl>
+									</div>
+									<div class="vs">vs</div>
+									<div class="select-item last">
+									
+										<dl>
+											<dt><label for="favorite${list[1].id}">${list[1].name}</label></dt>
+											<dd><input id="favorite${list[1].id}" ${checked[1]} name="choose${idx}" type="radio" value="${list[1].name}" /></dd>
+										</dl>
+									</div>
 								</div>
-								<div class="vs">vs</div>
-								<div class="select-item last">
-								
-									<dl>
-										<dt><label for="favorite${list[1].id}">${list[1].name}</label></dt>
-										<dd><input id="favorite${list[1].id}" name="choose${idx}" type="radio" value="${list[1].name}" /></dd>
-									</dl>
-								</div>
-							</div>
-						</fieldset>
-					`)
+							</fieldset>
+						`)
+						}
+					)
 				}
             </div>
         </section>
