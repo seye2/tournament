@@ -13,21 +13,21 @@ class Event {
 			const possibleTargets = element.querySelectorAll(selector);
 			const target = event.target;
 
-			for (let i = 0, l = possibleTargets.length; i < l; i++) {
+			possibleTargets.forEach((possibleTarget,idx)=> {
 				let el = target;
-				let p = possibleTargets[i];
 
 				while(el && el !== element) {
-					if (el === p) {
+					if (el === possibleTarget) {
 						setTimeout(() => {
 
-							return fn.call(p, event);
+							return fn.call(possibleTarget, event);
 						},150);
 					}
 
 					el = el.parentNode;
 				}
-			}
+			})
+
 		});
 	}
 
@@ -40,10 +40,9 @@ class Event {
 
 			values=this.dc.querySelectorAll(".select-item input[type=radio]:checked");
 
-			for(var i = 0; i < values.length;i++) {
-
-				names.push(values[i].getAttribute("value"));
-			}
+			values.forEach((value)=> {
+				names.push(value.getAttribute("value"));
+			});
 
 			result=this.manageState.selectItems(state,names);
 

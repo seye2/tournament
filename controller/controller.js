@@ -15,11 +15,10 @@ class Controller {
      * @param callback invoke function after complete template parsing
      */
     parseView(state,changeTemplate,changeTarget,flag,callback) {
-        let _self=this;
 
         try {
             //view, model 연결
-            _self.view.observe(state,changeTemplate,changeTarget,flag);
+            this.view.observe(state,changeTemplate,changeTarget,flag);
 
             if(typeof callback === 'function') {
 

@@ -4,10 +4,15 @@ class ManageState {
 	constructor() {
 		this.genNums=[];
 	}
-	inArray(array, el) {
-		for(let i = 0 ; i < array.length; i++)
-			if(array[i] == el) return true;
-		return false;
+	inArray(arrays, el) {
+		let isArray=false;
+
+		isArray=arrays.find((array)=> {
+			return array==el;
+		});
+
+		return isArray;
+
 	}
 	getRand(array) {
 		let rand = array[Math.floor(Math.random()*array.length)];
@@ -19,16 +24,12 @@ class ManageState {
 	}
 
 	getItems(state,action) {
-		let tempStore=state.store.getContent();
+		const count=0;
+
+		let tempStores=state.store.getContent();
 		let result=[];
 		let tempRand=[];
-		const count=0;
 		let newArray=[];
-
-		/*
-		16강:history에 값이 없다면 store의 16개 데이터를 랜덤으로 조합하여 history에 저장, history를 출력, 선택된 데이터는 newstore에 저장
-		8강: 16강에서 선택된 값 newstore에서 랜덤으로 8개를 추출하여 history에 저장, history를 출력, 선택된 데이터는 newstore에 저장
-		 */
 
 		//이전 버튼 클릭 시 마지막으로 저장된 내용으로 되돌리기
 		if(action==="prev") {
@@ -38,18 +39,20 @@ class ManageState {
 		} else {
 
 			if(state.newStore.getContent().length>0) {
-				tempStore=[];
+				tempStores=[];
 				newArray=[];
 				tempRand=[];
-				tempStore=state.newStore.getContent()[state.newStore.getContent().length-1];
+				tempStores=state.newStore.getContent()[state.newStore.getContent().length-1];
 
-				for(let i = 0; i < (tempStore.length/2); i++) {
-					newArray=this.getRand(tempStore).concat(this.getRand(tempStore));
+				for(let i = 0; i < (tempStores.length/2); i++) {
+					newArray=this.getRand(tempStores).concat(this.getRand(tempStores));
 					tempRand.push(newArray);
 				}
 
 			} else {
-				for(let i = 0; i < tempStore.length; i++) tempRand.push(this.getRand(tempStore));
+				tempStores.map((tempStore)=> {
+					tempRand.push(this.getRand(tempStores));
+				})
 			}
 
 			result = Object.assign(tempRand, {paging: state.paging.getPaging()});
@@ -66,29 +69,28 @@ class ManageState {
 		let items={};
 
 		// deep copy
-		let temp = JSON.parse(JSON.stringify(state.items));
+		let temps = JSON.parse(JSON.stringify(state.items));
 
-		for(let i = 0; i < names.length; i++) {
-			for(let j = 0; j < temp.length; j++) {
-
-				selectIndex=temp[j].findIndex(x => x.name === names[i]);
+		names.map((name)=> {
+			temps.map((temp)=> {
+				selectIndex=temp.findIndex(x => x.name === name);
 
 				if(selectIndex>-1) {
 
-					temp[j][selectIndex]['stage']=state.paging.currentPaging;
-					temp[j][selectIndex]['use']=true;
+					temp[selectIndex]['stage']=state.paging.currentPaging;
+					temp[selectIndex]['use']=true;
 
 					nonSelectIndex=(selectIndex===0) ? 1 : 0;
-					temp[j][nonSelectIndex]['stage'] = state.paging.currentPaging;
-					temp[j][nonSelectIndex]['use'] = false;
+					temp[nonSelectIndex]['stage'] = state.paging.currentPaging;
+					temp[nonSelectIndex]['use'] = false;
 				}
-			}
-		}
+			})
+		});
 
-		Object.assign(temp,{stage:state.paging.currentPaging});
-		result=temp.map(data=> data.filter((x)=> x.use===true));
+		Object.assign(temps,{stage:state.paging.currentPaging});
+		result=temps.map(temp=> temp.filter((x)=> x.use===true));
 
-		return [result, temp]
+		return [result, temps]
 
 	}
 }

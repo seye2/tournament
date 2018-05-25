@@ -1,6 +1,6 @@
 require('babel-register');
 const Controller = require("../controller/controller").default;
-const template = require("../template/tournament");
+const Template = require("../template/tournament");
 const event = require("./event").Event;
 const {Store,NewStore,Paging,HistoryStore} = require("../model/store");
 const {ManageState}= require("../controller/manageState");
@@ -10,11 +10,13 @@ const newStore=new NewStore();
 const historyStore=new HistoryStore();
 const manageState=new ManageState();
 const paging=new Paging({totalCount:store.getContent().length*2});
-let controller=new Controller('.container',template.tournaments);
+const template=new Template();
+let controller=new Controller('.container',template.getTournamentTemplate);
 
 document.addEventListener("DOMContentLoaded", function() {
 
     let pageEvent=new event();
+
     const storeObject={
 		store:store,
         newStore:newStore,
@@ -28,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         pageEvent.btnNext(storeObject,(check)=> {
             if(check==="last") {
-				controller.parseView(storeObject,template.final,null,null,null);
+				controller.parseView(storeObject,template.getFinalTemplate,null,null,null);
             } else {
 				paging.forward();
 				Object.assign(storeObject,{items:manageState.getItems(storeObject)});
